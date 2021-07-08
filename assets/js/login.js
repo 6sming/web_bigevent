@@ -39,7 +39,7 @@ $('#form_reg').on('submit', function(e) {
     // (2).设置用户注册数据
     var data = { username: $('#form_reg [name=username]').val(), password: $('#form_reg [name=password]').val() };
     // (3).发起Ajax的POST请求
-    $.post('http://api-breakingnews-web.itheima.net/api/reguser', data,
+    $.post('/api/reguser', data,
         function(res) {
             if (res.status !== 0) {
                 return layer.msg(res.message);
@@ -49,13 +49,13 @@ $('#form_reg').on('submit', function(e) {
             $('#link_login').click();
         });
 });
-// 4.监听登录表单提交事件
+// 4. 监听登录表单提交事件
 $('#form_login').submit(function(e) {
     // (1).阻止默认行为
     e.preventDefault();
     // (2).
     $.ajax({
-        url: 'http://api-breakingnews-web.itheima.net/api/login',
+        url: '/api/login',
         method: 'POST',
         // serialize() 快速获取表单中的数据
         data: $(this).serialize(),
